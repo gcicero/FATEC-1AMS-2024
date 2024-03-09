@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+void Discount(float *price, float discountPorcent) {
+
+  float discountValue = *price * (discountPorcent / 100);
+  printf("Discount value: R$ %.2f (%.1f%%)\n", discountValue, discountPorcent);
+  *price -= discountValue;
+}
+
+int main() {
+
+  float productprice, discountPorcent;
+
+  printf("Product Price: ");
+  scanf("%f", &productprice);
+
+  printf("Discount (in percentage): ");
+  scanf("%f", &discountPorcent);
+
+  printf("Original price: R$ %.2f\n", productprice);
+
+  Discount(&productprice, discountPorcent);
+
+  printf("Final price: R$ %.2f\n", productprice);
+
+  return 0;
+}
