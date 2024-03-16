@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+//FUNCTION
+int BigNumber(int *ptr, int lengtharray) 
+{
+  int biggestNumber = *ptr;
+  for (int i = 0; i < lengtharray; i++) 
+  {
+    if (*(ptr + i) > biggestNumber) 
+    {
+      biggestNumber = *(ptr + i);
+    }
+  }
+  return biggestNumber;
+}
+
+//MAIN
+int main(void) {
+
+  //Declaration
+  int Elements[5];
+  int lengtharray = sizeof(Elements) / sizeof(Elements[0]);
+  //Entry
+  for (int i = 0; i < lengtharray; i++) {
+    printf("Enter the %d element: ", i+1);
+    scanf("%d", &Elements[i]);
+  }
+  //Ascending Order
+  for (int i = 0; i < lengtharray; i++) {
+    for (int j = i + 1; j < lengtharray; j++) {
+      if (Elements[i] > Elements[j]) {
+        int temp = Elements[i];
+        Elements[i] = Elements[j];
+        Elements[j] = temp;
+      }
+    }
+  }
+  //Print and call the function
+  printf("Biggest element : %d", BigNumber(Elements, lengtharray));
+  return 0;
+}
