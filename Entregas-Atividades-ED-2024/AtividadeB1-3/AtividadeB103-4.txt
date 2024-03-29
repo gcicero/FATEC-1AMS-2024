@@ -1,0 +1,38 @@
+#include <stdio.h>
+//FUNCTION
+int MultiplytArray(int *ptr, int lengtharray) {
+  int Numbers = *ptr;
+  int Multiplier;
+  printf("Enter the multiplier: ");
+  scanf("%d", &Multiplier);
+  for (int i = 0; i < lengtharray; i++) {
+    printf("Element number %d: %d", i+1, *(ptr + i)*Multiplier);
+    printf("\n");
+  }
+  return Numbers;
+}
+//MAIN
+int main(void) {
+  //Declaration
+  int Elements[5];
+  int lengtharray = sizeof(Elements) / sizeof(Elements[0]);
+  //Entry
+  for (int i = 0; i < lengtharray; i++) {
+    printf("Enter the %dº element: ", i + 1);
+    scanf("%d", &Elements[i]);
+  }
+  //Ascending Order
+  for (int i = 0; i < lengtharray; i++) {
+    for (int j = i + 1; j < lengtharray; j++) {
+      if (Elements[i] > Elements[j]) {
+        int temp = Elements[i];
+        Elements[i] = Elements[j];
+        Elements[j] = temp;
+      }
+    }
+  }
+  //Call the function
+  MultiplytArray(Elements, lengtharray);
+
+  return 0;
+}
