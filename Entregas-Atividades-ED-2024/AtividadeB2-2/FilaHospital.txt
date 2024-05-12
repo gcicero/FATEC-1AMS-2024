@@ -1,0 +1,261 @@
+/*------------------------------------------------------------------------*/
+/*   FATEC-São Caetano do Sul                 Estrutura de Dados          */
+/*                         Giovanni Cicero                                */
+/*             Objetivo: Fila de hospital                                 */
+/*             Paradigama: - programação Estruturada                      */
+/*                                                                        */
+/*                                                         Data:12/05/2024*/
+/*-------------------------------------------------------------------------*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_NOME 50
+
+//Médicos enum=enumerar
+typedef enum {
+  CLINICO_GERAL,
+  DERMATOLOGISTA,
+  CARDIOLOGISTA,
+  CIRURGIAO,
+  ENDOCRINOLOGISTA
+} TipoMedico;
+
+//Dados paciente
+typedef struct {
+  char nome[MAX_NOME];
+  int idade;
+  char motivo_consulta[MAX_NOME];
+  TipoMedico tipo_medico;
+} Paciente;
+
+//Estrutura do nó da fila
+typedef struct No {
+  Paciente paciente;
+  struct No *proximo;
+} No;
+
+//Fila
+typedef struct {
+  No *inicio;
+  No *fim;
+} Fila;
+
+void inicializarFila(Fila *fila) {
+  fila->inicio = NULL;
+  fila->fim = NULL;
+}
+
+int filaVazia(Fila *fila) { return (fila->inicio == NULL); }
+
+// Função para selecionar o tipo de médico
+TipoMedico selecionarTipoMedico() {
+  int opcao;
+  printf("Selecione o tipo de médico:\n");
+  printf("1. Clínico Geral\n");
+  printf("2. Dermatologista\n");
+  printf("3. Cardiologista\n");
+  printf("4. Cirurgião\n");
+  printf("5. Endocrinologista\n");
+  printf("Opção: ");
+  scanf("%d", &opcao);
+  switch (opcao) {
+  case 1:
+    return CLINICO_GERAL;
+  case 2:
+    return DERMATOLOGISTA;
+    case 3:
+        return CARDIOLOGISTA;
+    case 4:
+        return CIRURGIAO;
+    case 5:
+        return ENDOCRINOLOGISTA;
+    default:
+        printf("Opção inválida.\n");
+        return CLINICO_GERAL; // Retorna Clínico Geral por padrão em caso de opção inválida
+      }
+    }
+
+
+// Add paciente
+void adicionarPaciente(Fila *fila, Paciente paciente) {
+  No *novoNo = (No *)malloc(sizeof(No));
+  novoNo->paciente = paciente;
+  novoNo->proximo = NULL;
+
+  if (filaVazia(fila)) {
+    fila->inicio = novoNo;
+    fila->fim = novoNo;
+  } else {
+    fila->fim->proximo = novoNo;
+    fila->fim = novoNo;
+  }
+}
+
+// Rem paciente
+Paciente removerPaciente(Fila *fila) {
+  if (filaVazia(fila)) {
+    Paciente pacienteVazio;
+    strcpy(pacienteVazio.nome, "Vazio");
+    pacienteVazio.idade = -1;
+    strcpy(pacienteVazio.motivo_consulta, "Vazio");
+    pacienteVazio.tipo_medico =
+        CLINICO_GERAL;
+    return pacienteVazio;
+  }
+ //Retorna o paciente do início da fila
+  No *temp = fila->inicio;
+  Paciente paciente = temp->paciente;
+  fila->inicio = temp->proximo;
+  free(temp);
+
+  if (fila->inicio == NULL) {
+    fila->fim = NULL;
+  }
+
+  return paciente;
+}
+
+// Retorna o próximo paciente na fila sem removê-lo
+Paciente proximoPaciente(Fila *fila) {
+  if (filaVazia(fila)) {
+    Paciente pacienteVazio;
+    strcpy(pacienteVazio.nome, "Vazio");
+    pacienteVazio.idade = -1;
+    strcpy(pacienteVazio.motivo_consulta, "Vazio");
+    pacienteVazio.tipo_medico =
+        CLINICO_GERAL;
+    return pacienteVazio;
+  }
+
+  return fila->inicio->paciente;
+}
+
+// Exibe os pacientes na fila
+void exibirFila(Fila *fila) {
+  No *atual = fila->inicio;
+  printf("Fila de pacientes:\n");
+  while (atual != NULL) {
+    printf("Nome: %s, Idade: %d, Motivo da Consulta: %s, Médico: ",
+           atual->paciente.nome, atual->paciente.idade,
+           atual->paciente.motivo_consulta);
+    switch (atual->paciente.tipo_medico) {
+    case CLINICO_GERAL:
+      printf("Clínico Geral\n");
+      break;
+    case DERMATOLOGISTA:
+      printf("Dermatologista\n");
+      break;
+    case CARDIOLOGISTA:
+      printf("Cardiologista\n");
+      break;
+    case CIRURGIAO:
+      printf("Cirurgião\n");
+      break;
+    case ENDOCRINOLOGISTA:
+      printf("Endocrinologista\n");
+      break;
+    default:
+      printf("Desconhecido\n");
+    }
+    atual = atual->proximo;
+  }
+}
+
+Paciente inserirPacienteManualmente() {
+  Paciente novoPaciente;
+  novoPaciente.tipo_medico = selecionarTipoMedico();
+  printf("Nome do paciente: ");
+  scanf("%s", novoPaciente.nome);
+  printf("Idade do paciente: ");
+  scanf("%d", &novoPaciente.idade);
+  printf("Motivo da consulta: ");
+  scanf("%s", novoPaciente.motivo_consulta);
+  return novoPaciente;
+}
+
+    //Tipo de chamado
+    int selecionarTipoChamado() {
+      int opcao;
+      printf("Selecione o tipo de chamado:\n");
+      printf("1. Normal\n");
+      printf("2. Prioritário\n");
+      printf("3. Urgente\n");
+      printf("Opção: ");
+      scanf("%d", &opcao);
+      return opcao;
+    }
+
+    int main() {
+      Fila filaNormal;
+      Fila filaPrioritaria;
+      Fila filaUrgente;
+
+      inicializarFila(&filaNormal);
+      inicializarFila(&filaPrioritaria);
+      inicializarFila(&filaUrgente);
+
+      int opcao;
+
+      do {
+        printf("\nMenu:\n");
+        printf("1. Adicionar paciente\n");
+        printf("2. Atender próximo paciente\n");
+        printf("3. Exibir filas\n");
+        printf("0. Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+        case 1: {
+          int tipoChamado = selecionarTipoChamado();
+          Paciente novoPaciente = inserirPacienteManualmente();
+          switch (tipoChamado) {
+          case 1:
+            adicionarPaciente(&filaNormal, novoPaciente);
+            break;
+          case 2:
+            adicionarPaciente(&filaPrioritaria, novoPaciente);
+            break;
+          case 3:
+            adicionarPaciente(&filaUrgente, novoPaciente);
+            break;
+          default:
+            printf("Opção inválida.\n");
+          }
+          break;
+        }
+        case 2:
+          if (!filaVazia(&filaUrgente)) {
+            printf("Atendendo paciente urgente: %s\n",
+                   removerPaciente(&filaUrgente).nome);
+          } else if (!filaVazia(&filaPrioritaria)) {
+            printf("Atendendo paciente prioritário: %s\n",
+                   removerPaciente(&filaPrioritaria).nome);
+          } else if (!filaVazia(&filaNormal)) {
+            printf("Atendendo paciente normal: %s\n",
+                   removerPaciente(&filaNormal).nome);
+          } else {
+            printf("Não há pacientes para atender.\n");
+          }
+          break;
+        case 3:
+          printf("\n--- Fila Normal ---\n");
+          exibirFila(&filaNormal);
+          printf("\n--- Fila Prioritária ---\n");
+          exibirFila(&filaPrioritaria);
+          printf("\n--- Fila Urgente ---\n");
+          exibirFila(&filaUrgente);
+          break;
+        case 0:
+          printf("Encerrando o programa...\n");
+          break;
+        default:
+          printf("Opção inválida. Tente novamente.\n");
+        }
+
+      } while (opcao != 0);
+
+      return 0;
+    }
+
