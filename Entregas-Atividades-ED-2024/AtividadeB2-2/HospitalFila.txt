@@ -1,6 +1,6 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <string.h>
 #include <time.h>
 
@@ -321,13 +321,16 @@ int main() {
           adicionarPaciente(&filaHistorico, historicoPaciente);
 
           estadoMedicos[i].ocupado = 0;
+          pacienteEncontrado = true;
           break;
         }
       }
-       if (!pacienteEncontrado) {
-         printf("Usuário não chamado ou sem registro no sistema.\n");
-       }
+
+      if (!pacienteEncontrado) {
+        printf("Erro: Paciente com ID %d não encontrado.\n", id);
+      }
       break;
+
     case 4:
       printf("\n--- Fila Normal ---\n");
       exibirFila(&filaNormal);
