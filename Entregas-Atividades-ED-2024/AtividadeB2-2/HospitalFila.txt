@@ -1,3 +1,11 @@
+/*------------------------------------------------------------------------*/
+/*   FATEC-São Caetano do Sul                 Estrutura de Dados          */
+/*                         Giovanni Cicero                                */
+/*             Objetivo: Fila Hospital                                    */
+/*             Paradigama: - programação Estruturada                      */
+/*                                                                        */
+/*                                                         Data:12/05/2024*/
+/*-------------------------------------------------------------------------*/
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
