@@ -62,3 +62,10 @@ def is_prime_recursive(num, divisor=2):
     if num % divisor == 0:
         return False
     return is_prime_recursive(num, divisor + 1)
+```
+
+## Ferramentas e Linguagens Utilizadas
+As seguintes ferramentas e linguagens serão utilizadas para a implementação desta solução:
+
+Linguagem de Programação: Python
+Ferramentas de Desenvolvimento: Replit e Github
