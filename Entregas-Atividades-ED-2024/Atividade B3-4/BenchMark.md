@@ -67,5 +67,5 @@ def is_prime_recursive(num, divisor=2):
 ## Ferramentas e Linguagens Utilizadas
 As seguintes ferramentas e linguagens serão utilizadas para a implementação desta solução:
 
-Linguagem de Programação: Python
-Ferramentas de Desenvolvimento: Replit e Github
+- Linguagem de Programação: Python
+- Ferramentas de Desenvolvimento: Replit e Github
