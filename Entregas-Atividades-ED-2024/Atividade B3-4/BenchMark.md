@@ -1,14 +1,14 @@
-# Projeto de Verificação Criptográfica
+# Projeto de Verificação Criptográfica - Benchmark
 
 ## Equipe
-- Nome do Membro 1 (Função)
-- Nome do Membro 2 (Função)
-- Nome do Membro 3 (Função)
-- Nome do Membro 4 (Função)
+- Bianca Soares
+- Bruno Martinho
+- Giovanni Cicero
+- Ruan Godoi
 
 ## Descrição do Negócio
 
-A empresa de segurança cibernética XYZ necessita monitorar e analisar grandes quantidades de dados criptográficos, garantindo a integridade e segurança das transmissões de dados. Muitos algoritmos de criptografia dependem de números primos para assegurar a robustez dos sistemas. A verificação contínua de números primos nas transmissões de dados é essencial para identificar possíveis falhas ou tentativas de invasão. 
+A empresa de segurança cibernética Cyrus necessita monitorar e analisar grandes quantidades de dados criptográficos, garantindo a integridade e segurança das transmissões de dados. Muitos algoritmos de criptografia dependem de números primos para assegurar a robustez dos sistemas. A verificação contínua de números primos nas transmissões de dados é essencial para identificar possíveis falhas ou tentativas de invasão. 
 
 Portanto, este software visa implementar uma solução que verifique a primalidade de números, garantindo que os dados transmitidos permaneçam seguros e confiáveis.
 
