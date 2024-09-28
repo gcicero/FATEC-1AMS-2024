@@ -1,7 +1,6 @@
-# Projeto de Verificação Criptográfica
+# Projeto de Verificação Criptográfica - Benchmark
 
 ## Equipe
-
 - Bianca Soares
 - Bruno Martinho
 - Giovanni Cicero
@@ -9,7 +8,7 @@
 
 ## Descrição do Negócio
 
-A empresa de segurança cibernética XYZ necessita monitorar e analisar grandes quantidades de dados criptográficos, garantindo a integridade e segurança das transmissões de dados. Muitos algoritmos de criptografia dependem de números primos para assegurar a robustez dos sistemas. A verificação contínua de números primos nas transmissões de dados é essencial para identificar possíveis falhas ou tentativas de invasão.
+A empresa de segurança cibernética Cyrus necessita monitorar e analisar grandes quantidades de dados criptográficos, garantindo a integridade e segurança das transmissões de dados. Muitos algoritmos de criptografia dependem de números primos para assegurar a robustez dos sistemas. A verificação contínua de números primos nas transmissões de dados é essencial para identificar possíveis falhas ou tentativas de invasão. 
 
 Portanto, este software visa implementar uma solução que verifique a primalidade de números, garantindo que os dados transmitidos permaneçam seguros e confiáveis.
 
@@ -67,3 +66,9 @@ def is_prime_recursive(num, divisor=2):
         return False
     return is_prime_recursive(num, divisor + 1)
 ```
+
+## Ferramentas e Linguagens Utilizadas
+As seguintes ferramentas e linguagens serão utilizadas para a implementação desta solução:
+
+- Linguagem de Programação: Python
+- Ferramentas de Desenvolvimento: Replit e Github
