@@ -1,0 +1,3 @@
+Melhoria de Eficiência com Verificação de Trocas
+
+No código fonte o algoritmo percorre todas as iterações, mesmo quando o array já está ordenado. Isso pode ser otimizado adicionando uma verificação de trocas em cada iteração. Se em uma iteração completa não houver trocas, significa que o array já está ordenado, e o algoritmo pode ser interrompido, economizando tempo de execução.
