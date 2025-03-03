@@ -1,6 +1,6 @@
 # Lesson Repository
 
-This repository was created to store the lessons requested by the professor during the semester.
+This repository was created to store the lessons I completed in 2024
 
 ## Repository Structure
 
